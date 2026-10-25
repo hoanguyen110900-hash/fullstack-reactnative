@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-native";
 
 import { CREATE_USER } from "../graphql/queries";
 import useSignIn from "../hooks/useSignIn";
+import KeyboardAwareForm from "./KeyboardAwareForm";
 
 import theme from "../theme";
 
@@ -125,7 +126,7 @@ const SignUp = () => {
         errors,
         touched,
       }) => (
-        <View style={styles.container}>
+        <KeyboardAwareForm contentContainerStyle={styles.container}>
           <Text style={styles.title}>Sign up</Text>
 
           <View>
@@ -185,7 +186,7 @@ const SignUp = () => {
               {loading ? "Creating account..." : "Sign up"}
             </Text>
           </Pressable>
-        </View>
+        </KeyboardAwareForm>
       )}
     </Formik>
   );

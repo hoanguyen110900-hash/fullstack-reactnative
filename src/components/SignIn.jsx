@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { StyleSheet, TextInput, Pressable, View } from "react-native";
 import { useFormik } from "formik";
 import Text from "./Text";
+import KeyboardAwareForm from "./KeyboardAwareForm";
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
 
@@ -10,7 +11,7 @@ import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: "center",
     padding: theme.spacing.large,
   },
@@ -89,7 +90,7 @@ export const SignInForm = ({ onSubmit }) => {
   });
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareForm contentContainerStyle={styles.container}>
       <View style={styles.card}>
         <View>
           <Text style={styles.title}>Welcome back</Text>
@@ -154,7 +155,7 @@ export const SignInForm = ({ onSubmit }) => {
           <Text style={styles.buttonText}>Sign in</Text>
         </Pressable>
       </View>
-    </View>
+    </KeyboardAwareForm>
   );
 };
 
