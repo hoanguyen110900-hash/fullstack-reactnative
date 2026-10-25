@@ -10,7 +10,11 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        repositories: relayStylePagination(),
+        repositories: relayStylePagination([
+          "orderBy",
+          "orderDirection",
+          "searchKeyword",
+        ]),
       },
     },
     Repository: {

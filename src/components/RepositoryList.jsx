@@ -1,5 +1,5 @@
 import { FlatList, View, StyleSheet, Pressable } from "react-native";
-import { Menu, Button, Searchbar } from "react-native-paper";
+import { Menu, Button, TextInput } from "react-native-paper";
 import { useNavigate } from "react-router-native";
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
@@ -91,10 +91,17 @@ const RepositoryListHeader = ({
   onSelectOrder,
 }) => (
   <View style={styles.header}>
-    <Searchbar
+    <TextInput
+      mode="outlined"
       style={styles.searchInput}
+      outlineStyle={{
+        borderWidth: 2,
+        borderColor: theme.colors.borderColor,
+        borderRadius: 24,
+      }}
       placeholder="Search repositories..."
       placeholderTextColor="#9CA3AF"
+      textColor="#000000"
       value={searchKeyword}
       onChangeText={setSearchKeyword}
       autoCapitalize="none"
@@ -108,7 +115,6 @@ const RepositoryListHeader = ({
         <Button
           style={styles.button}
           textColor={theme.colors.primary}
-          icon="chevron-down"
           contentStyle={styles.sortButtonContent}
           onPress={() => setMenuVisible(true)}
         >
