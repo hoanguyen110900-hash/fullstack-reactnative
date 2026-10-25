@@ -49,7 +49,9 @@ describe("RepositoryList", () => {
       };
 
       const { getAllByTestId } = await render(
-        <RepositoryListContainer repositories={repositories} />,
+        <RepositoryListContainer
+          repositories={repositories.edges.map(({ node }) => node)}
+        />,
       );
 
       const repositoryItems = getAllByTestId("repositoryItem");

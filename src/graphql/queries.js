@@ -81,6 +81,10 @@ export const GET_REPOSITORY = gql`
             text
             rating
             createdAt
+            user {
+              id
+              username
+            }
           }
         }
         pageInfo {

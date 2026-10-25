@@ -56,6 +56,7 @@ const validationSchema = yup.object().shape({
   rating: yup
     .number()
     .typeError("Rating must be a number")
+    .integer("Rating must be a whole number")
     .required("Rating is required")
     .min(0, "Rating must be at least 0")
     .max(100, "Rating must be at most 100"),
