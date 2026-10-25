@@ -13,7 +13,7 @@ A React Native application for browsing and reviewing GitHub repositories, built
 ## Try the App on your phone
 
 Try the App on your phone by scanning the QR code with Expo Go:
-![Sign In](./qr.png)
+![QR](./qr.png)
 
 ## Commands
 
