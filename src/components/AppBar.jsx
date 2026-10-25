@@ -5,14 +5,12 @@ import { ME } from "../graphql/queries";
 import useSignOut from "../hooks/useSignOut";
 import AppBarTab from "./AppBarTab";
 import theme from "../theme";
-import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: Constants.statusBarHeight,
     paddingHorizontal: 16,
     backgroundColor: theme.colors.appBarTabBackground,
   },
