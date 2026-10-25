@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ApolloProvider } from "@apollo/client/react";
+import { StatusBar } from "expo-status-bar";
+import { NativeRouter } from "react-router-native";
+import { PaperProvider } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Main from "./src/components/Main";
+import createApolloClient from "./src/utils/apolloClient";
+import AuthStorage from "./src/utils/authStorage";
+import AuthStorageContext from "./src/contexts/AuthStorageContext";
 
-export default function App() {
+const authStorage = new AuthStorage();
+const apolloClient = createApolloClient(authStorage);
+
+const App = () => {
+  console.log("env check:", process.env.EXPO_PUBLIC_ENV);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <SafeAreaProvider>
+        <PaperProvider>
+          <StatusBar style="light" />
+          <NativeRouter>
+            <ApolloProvider client={apolloClient}>
+              <AuthStorageContext.Provider value={authStorage}>
+                <Main />
+              </AuthStorageContext.Provider>
+            </ApolloProvider>
+          </NativeRouter>
+        </PaperProvider>
+      </SafeAreaProvider>
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
